@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       redirect_to :new
+    end
   end
 
   def edit
