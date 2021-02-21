@@ -1,0 +1,37 @@
+<h2>新規投稿</h2>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 form">
+    <%= form_with(model:@post, local:true) do |f| %>
+      <div class="form-group">
+        <p>カテゴリー</p>
+        <div class="category_menu">
+          <%=f.radio_button :category, :listening %>
+          <%= f.label :category, "リスニング", value: :listening, required: true %>
+        </div>
+        <div class="category_menu">
+          <%=f.radio_button :category, :writing %>
+          <%= f.label :category, "ライティング", value: :writing ,required: true %>
+        </div>
+        <div class="category_menu">
+          <%=f.radio_button :category, :reading %>
+          <%= f.label :category, "リーディング", value: :reading, required: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :content %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content, "勉強方法" %>
+        <%= f.text_area :content %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content, "使用した教材" %>
+        <%= f.text_area :content %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "投稿する", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+<div>
