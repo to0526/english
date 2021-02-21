@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 250 }
   validates :good_point, length: { maximum: 100 }
   has_secure_password
+  has_many :posts
 end

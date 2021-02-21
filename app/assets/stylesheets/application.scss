@@ -50,7 +50,10 @@ h2{
 
   input, textarea{
     border: 1px solid #bbb;
-    width: 90%;
     margin-bottom: 20px;
+  }
+  .category_menu
+  {
+    display: inline-block;
   }
 }
