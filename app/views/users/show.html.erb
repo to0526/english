@@ -1,2 +1,22 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<section class="user_info">
+  <div>
+    <%= @user.name %>
+  </div>
+  <div class="user_profile">
+    <%= @user.profile %>
+  </div>
+  <% if @user == current_user %>
+    <div>
+      <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-outline-secondary" %>
+    </div>
+    <div>
+      <%= link_to "アカウント削除", user_path, method: :delete, data: { confirm: "アカウントを削除しますか?" }, class: "btn btn-danger"%>
+    </div>
+  <% end %>
+</section>
+<!--投稿一覧-->
+<div>
+  <% @posts.each do |post| %>
+
+  <% end %>
+</div>
