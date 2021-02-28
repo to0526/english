@@ -1,5 +1,45 @@
-<div class='jumbotron jumbotron-extend'>
-  <div class='container-fluid jumbotron-container'>
-    <h1>ENPROVE</h1>
+<% if logged_in? %>
+  <seciton class="post-all">
+    <p class="post-all-title">みんなの投稿一覧</p>
+    <div class="container">
+      <div class="row">
+        <article>
+          <% if @posts.present? %>
+            <% @posts.each do |post| %>
+              <div class="col-md-12 post-all-division">
+                <div class="row">
+                  <div class="col-md-2">
+                    <%=link_to user_path(post.user), class: "link-style" do %>
+                      <div>
+                        <%= image_tag post.user.icon.url, class: "icon", :size => "100x100" %>
+                      </div>
+                      <div>
+                        <%= post.user.name %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="col-md-10 post-info">
+                    <%= link_to post_path(post), class: "link-style" do %>
+                      <p class="post-info-title"><%= post.title %></p>
+                      <span class="post-info-category"><%= post.category %></span>
+                      <div class="post-info-content">
+                        <%= post.content %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </article>
+      </div>
+    </div>
+    <%= paginate @posts %>
+  </section>
+<% else %>
+  <div class='jumbotron jumbotron-extend'>
+    <div class='container-fluid jumbotron-container'>
+      <h1>ENPROVE</h1>
+    </div>
   </div>
-</div>
+<% end %>

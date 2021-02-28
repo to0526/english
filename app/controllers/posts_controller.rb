@@ -3,17 +3,18 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to @user
     else
-      render :new
+      redirect_to "/"
     end
   end
 
   def show
-    @post = find(params[:id])
+    @post = Post.find(params[:id])
     @user = @post.user
   end
 
