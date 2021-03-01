@@ -17,8 +17,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-header{
-  background-color: #FFFFCC;
+html, body{
+  height: 100%;
 }
 
 .link-style{
@@ -26,24 +26,58 @@ header{
   color: #565656;
 }
 
+.header-menu-left, .header-menu-right{
+  margin-bottom: 10px;
+  display: inline-block;
+  display: flex;
+  list-style: none;
+  a{
+    text-decoration: none !important;
+    margin: 0 10px;
+    color: #565656;
+    cursor: pointer;
+  }
+}
+.header-menu-left{
+  justify-content: flex-end;
+}
+
+.header-menu-right{
+  display: flex-start;
+  width: 100px;
+  a{
+    font-size: 20px;
+
+  }
+}
+
 .icon{
   border-radius: 50%;
   margin-bottom: 20px;
 }
 
-.jumbotron-extend{
+.top-page{
   position: relative;
-  height: 100vh;
-  min-height: 300px;
-  /*background-image: image-url('topimage.jpg')*/
-  background-position: center center;
+  height: 70vh;
+  background-image: image-url('topimage.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 
-  h1 {
-    font-size: 100px;
-    letter-spacing: -1px;
-  }
+  &-text{
+    position: absolute;
+    top: 30%;
+		left: 5%;
+		width: 400px;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: rgba(238, 238, 238, 0.65);
+		border: 1px solid #ccc; /* 枠線 */
+		h1{
+      color: black;
+      font-size: 60px;
+		}
+
+	}
 }
 
 h2{
@@ -155,19 +189,46 @@ h2{
 
   .post-info{
 
-    &-title{
-      font-size: 30px;
-    }
-
-    &-category{
-      background-color: #FFFFCC;
-      border-radius: 15px;
-      color: #000000;
-      padding: 5px 8px 5px 8px;
-    }
-
     &-content{
       margin-top: 10px;
     }
 }
+}
+
+.post-category{
+  background-color: #FFFFCC;
+  border-radius: 15px;
+  color: #000000;
+  padding: 5px 8px 5px 8px;
+  font-size: 12px;
+}
+
+.post-title{
+  display: inline-block;
+  font-size: 25px;
+  color: #565656;
+  border-bottom: dotted 2px #565656;
+  margin-bottom: 10px;
+
+}
+
+.post-detail{
+  padding: 0.5em 1em;
+  margin: 2em;
+  color: #474747;
+  border-left: double 7px #4ec4d3;
+  border-right: double 7px #4ec4d3;
+  height: 100%;
+
+    &-name{
+      display: inline;
+    }
+
+  &-content{
+    height: 90%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+  }
+
 }
