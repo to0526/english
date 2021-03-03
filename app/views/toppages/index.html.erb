@@ -1,86 +1,81 @@
-<% if logged_in? %>
-  <seciton class="post-all">
-    <p class="post-all-title">みんなの投稿一覧</p>
-    <div class="container">
-      <div class="row">
-        <article>
-          <% if @posts.present? %>
-            <% @posts.each do |post| %>
-              <div class="col-md-12 post-all-division">
-                <div class="row">
-                  <div class="col-md-2">
-                    <%=link_to user_path(post.user), class: "link-style" do %>
-                      <div>
-                        <%= image_tag post.user.icon.url, class: "icon", :size => "100x100" %>
-                      </div>
-                      <div>
-                        <%= post.user.name %>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="col-md-10 post-info">
-                    <%= link_to post_path(post), class: "link-style" do %>
-                      <p class="post-title"><%= post.title %></p>
-                      <div>
-                        <span class="post-category"><%= post.category %></span>
-                      </div>
-                      <div class="post-info-content">
-                        <%= post.content %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </article>
-      </div>
-    </div>
-    <%= paginate @posts %>
-  </section>
-<% else %>
-  <div class="top-page">
-		<div class="top-page-text">
-			<h1>さあ、英語力伸ばさない？</h1>
-    </div>
+<div class="top-page">
+  <div class="top-page-text">
+    <h1>さあ、英語力伸ばさない？</h1>
   </div>
-  <seciton class="post-all">
-    <p class="post-all-title">みんなの投稿一覧</p>
-    <div class="container">
-      <div class="row">
-        <article>
-          <% if @posts.present? %>
-            <% @posts.each do |post| %>
-              <div class="col-md-12 post-all-division">
-                <div class="row">
-                  <div class="col-md-2">
-                    <%=link_to user_path(post.user), class: "link-style" do %>
-                      <div>
-                        <%= image_tag post.user.icon.url, class: "icon", :size => "100x100" %>
-                      </div>
-                      <div>
-                        <%= post.user.name %>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="col-md-10 post-info">
-                    <%= link_to post_path(post), class: "link-style" do %>
-                      <p class="post-title"><%= post.title %></p>
-                      <div>
-                        <span class="post-category"><%= post.category %></span>
-                      </div>
-                      <div class="post-info-content">
-                        <%= post.content %>
-                      </div>
-                    <% end %>
-                  </div>
+</div>
+<main>
+<section class="post-all">
+  <p class="post-all-title">カテゴリーから探す</p>
+  <%= link_to( image_tag("img.png"), controller: "posts", action: "index", category_id: 1) do %>
+  <% end %>
+</section>
+  <section class="post-all">
+    <p class="post-all-title">新着投稿一覧</p>
+      <article>
+        <% if @posts.present? %>
+          <% @posts.first(3). each do |post| %>
+            <div class="post-all-division">
+              <%=link_to user_path(post.user), class: "link-style" do %>
+                <div class="post-all-division-user">
+                  <%= image_tag post.user.icon.url, class: "icon", :size => "30x30" %>
+                  <p><%= post.user.name %>さんの投稿</p>
+                  <span><%= l post.user.created_at %></span>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+              <%= link_to post_path(post), class: "link-style" do %>
+                <div class="post-title">
+                  <p><%= post.title %></p>
+                  <span class="post-category"><%= post.category %></span>
+                </div>
+                <div class="post-info-content">
+                  <%= post.content %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
-        </article>
+        <% end %>
+      </article>
+      <div class= "post-all-view">
+        <%=link_to "すべて投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
       </div>
-    </div>
-    <%= paginate @posts %>
   </section>
-<% end %>
+  <section class="user-all">
+    <p class="post-all-title">投稿数が多いユーザー</p>
+    <div class="user-all-info">
+      <% @users.first(4).each do |user| %>
+        <div class=user-all-info-division>
+          <%=link_to user_path(user), class: "link-style" do %>
+            <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
+            <div>
+              <%= user.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="user-all">
+    <p class="post-all-title">お気に入り数が多い投稿</p>
+    <div class="user-all-info">
+      <% @users.first(4).each do |user| %>
+        <div class=user-all-info-division>
+          <%=link_to user_path(user), class: "link-style" do %>
+            <%= image_tag user.icon.url, class: "icon", :size => "100x100" %>
+            <div>
+              <%= user.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</main>
+<aside>
+  <div class="user-all">
+    <p>＼とっておきの英語の勉強方法を共有しよう／</p>
+    <p>ENPROVEに登録すると、あなたの英語の勉強方法を投稿することが出来ます。</p>
+    <%= link_to new_user_path do %>
+      <button type="button" class="btn btn-gold btn-sm text-white">無料会員登録</button>
+    <% end %>
+  </div>
+</aside>
