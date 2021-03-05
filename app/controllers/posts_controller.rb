@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:category]
+      @posts = Post.where(category: params[:category])
+    else
+      @posts = Post.all
+    end
   end
 
 

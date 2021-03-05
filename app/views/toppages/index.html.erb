@@ -37,6 +37,14 @@
       </article>
       <div class= "post-all-view">
         <%=link_to "すべて投稿を見る", posts_path %><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <br>
+        <%=link_to "スピーキングの投稿を見る", posts_path(category: "スピーキング") %><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <br>
+        <%=link_to "リーディングの投稿を見る", posts_path(category: "リーディング") %><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <br>
+        <%=link_to "ライティングの投稿を見る", posts_path(category: "ライティング") %><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <br>
+        <%=link_to "リスニングの投稿を見る", posts_path(category: "リスニング") %><i class="fa fa-angle-right" aria-hidden="true"></i>
       </div>
   </section>
   <section class="user-all">
